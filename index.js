@@ -83,7 +83,13 @@ let runComparison = () => {
 };
 
 const movieTemplate = (movieDetail) => {
-  let boxoffice = parseInt(movieDetail.BoxOffice.replace(/\$/g, '').replace(/,/g, ''));
+  let boxoffice;
+  if (movieDetail.BoxOffice) {
+    boxoffice = parseInt(movieDetail.BoxOffice.replace(/\$/g, '').replace(/,/g, ''));
+  } else {
+    boxoffice = 0;
+  }
+
   let metascore = parseInt(movieDetail.Metascore);
   let imdbRating = parseFloat(movieDetail.imdbRating);
   let imdbVotes = parseInt(movieDetail.imdbVotes.replace(/,/g, ''));
